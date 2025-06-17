@@ -16,6 +16,7 @@ package jsonnetfile
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -81,7 +82,16 @@ func Unmarshal(bytes []byte) (v1.JsonnetFile, error) {
 
 // Exists returns whether the file at the given path exists
 func Exists(path string) (bool, error) {
-	_, err := os.Stat(path)
+	fileInfo, err := os.Stat(path)
+
+	if err != nil {
+		fmt.Println("Error checking file", path, ":", err)
+	}
+
+	if fileInfo != nil {
+		fmt.Println("Got back file info for", path, ":", fileInfo)
+	}
+
 	if os.IsNotExist(err) {
 		return false, nil
 	}
