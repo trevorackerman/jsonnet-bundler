@@ -287,6 +287,7 @@ func ensure(direct *deps.Ordered, vendorDir, pathToParentModule string, locks *d
 // download retrieves a package from a remote upstream. The checksum of the
 // files is generated afterwards.
 func download(d deps.Dependency, vendorDir, pathToParentModule string) (*deps.Dependency, error) {
+	fmt.Println("downloading", d.Name(), "to", vendorDir)
 	var p Interface
 	switch {
 	case d.Source.GitSource != nil:
@@ -320,6 +321,7 @@ func download(d deps.Dependency, vendorDir, pathToParentModule string) (*deps.De
 
 	var sum string
 	if d.Source.LocalSource == nil {
+		fmt.Println("hashing", filepath.Join(vendorDir, d.Name()), "which does not have a local source")
 		sum = hashDir(filepath.Join(vendorDir, d.Name()))
 	}
 
@@ -333,6 +335,7 @@ func download(d deps.Dependency, vendorDir, pathToParentModule string) (*deps.De
 // their purpose is to change during development where integrity checking would
 // be a hindrance.
 func check(d deps.Dependency, vendorDir string) bool {
+	fmt.Println("checking", d.Name(), "in", vendorDir)
 	// assume a local dependency is intact as long as it exists
 	if d.Source.LocalSource != nil {
 		x, err := jsonnetfile.Exists(filepath.Join(vendorDir, d.Name()))
@@ -356,6 +359,7 @@ func check(d deps.Dependency, vendorDir string) bool {
 // hashing this data using sha256. This can be memory heavy with lots of data,
 // but jsonnet files should be fairly small
 func hashDir(dir string) string {
+	fmt.Println("hasdir hashing", dir)
 	hasher := sha256.New()
 
 	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
@@ -367,7 +371,7 @@ func hashDir(dir string) string {
 			return nil
 		}
 
-		fmt.Println("opening", path)
+		fmt.Println("hashdir opening", path)
 		f, err := os.Open(path)
 		if err != nil {
 			fmt.Println("error opening", path, ":", err)
