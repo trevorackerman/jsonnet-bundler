@@ -257,7 +257,17 @@ func ensure(direct *deps.Ordered, vendorDir, pathToParentModule string, locks *d
 			continue
 		}
 
+		p := filepath.Join(vendorDir, d.Name())
+		// Check if p is a file or a directory
+		info, err := os.Stat(p)
+		if err != nil {
+			fmt.Printf("error stating path %s: %v\n", p, err)
+		} else if !info.IsDir() {
+			continue
+		}
+
 		jf := filepath.Join(vendorDir, d.Name(), jsonnetfile.File)
+
 		fmt.Println("loading jsonnetfile", jf)
 		exists, err := jsonnetfile.Exists(jf)
 		if err != nil {
