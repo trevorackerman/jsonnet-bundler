@@ -255,12 +255,14 @@ func (p *GitPackage) Install(ctx context.Context, name, dir, version string) (st
 		return cmd
 	}
 
+	color.Yellow("git init")
 	cmd := gitCmd("init")
 	err = cmd.Run()
 	if err != nil {
 		return "", err
 	}
 
+	color.Yellow("git remote add origin", p.Source.Remote())
 	cmd = gitCmd("remote", "add", "origin", p.Source.Remote())
 	err = cmd.Run()
 	if err != nil {
@@ -268,6 +270,7 @@ func (p *GitPackage) Install(ctx context.Context, name, dir, version string) (st
 	}
 
 	// Attempt shallow fetch at specific revision
+	color.Yellow("git fetch --tags --depth 1 origin", version)
 	cmd = gitCmd("fetch", "--tags", "--depth", "1", "origin", version)
 	err = cmd.Run()
 	if err != nil {
@@ -295,6 +298,7 @@ func (p *GitPackage) Install(ctx context.Context, name, dir, version string) (st
 		}
 	}
 
+	color.Yellow("git -c advice.detachedHead=false checkout", version)
 	cmd = gitCmd("-c", "advice.detachedHead=false", "checkout", version)
 	err = cmd.Run()
 	if err != nil {
