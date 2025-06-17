@@ -16,8 +16,8 @@ package spec
 import (
 	"path/filepath"
 
-	v0 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v0"
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	v0 "github.com/trevorackerman/jsonnet-bundler/spec/v0"
+	"github.com/trevorackerman/jsonnet-bundler/spec/v1/deps"
 )
 
 func FromV0(mv0 v0.JsonnetFile) (JsonnetFile, error) {

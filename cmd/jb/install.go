@@ -25,10 +25,10 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg"
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	"github.com/trevorackerman/jsonnet-bundler/pkg"
+	"github.com/trevorackerman/jsonnet-bundler/pkg/jsonnetfile"
+	v1 "github.com/trevorackerman/jsonnet-bundler/spec/v1"
+	"github.com/trevorackerman/jsonnet-bundler/spec/v1/deps"
 )
 
 func installCommand(dir, jsonnetHome string, uris []string, single bool, legacyName string) int {

@@ -27,9 +27,9 @@ import (
 	"github.com/fatih/color"
 	"github.com/pkg/errors"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	"github.com/trevorackerman/jsonnet-bundler/pkg/jsonnetfile"
+	v1 "github.com/trevorackerman/jsonnet-bundler/spec/v1"
+	"github.com/trevorackerman/jsonnet-bundler/spec/v1/deps"
 )
 
 var (

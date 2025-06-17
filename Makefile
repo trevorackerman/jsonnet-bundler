@@ -2,7 +2,7 @@
 
 SHELL=/bin/bash
 
-GITHUB_URL=github.com/jsonnet-bundler/jsonnet-bundler
+GITHUB_URL=github.com/trevorackerman/jsonnet-bundler
 VERSION := $(shell git describe --tags --dirty --always)
 GOPATH=$(HOME)/go
 OUT_DIR=_output

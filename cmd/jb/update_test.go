@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
+	"github.com/trevorackerman/jsonnet-bundler/pkg/jsonnetfile"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

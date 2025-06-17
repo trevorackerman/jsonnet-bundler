@@ -27,9 +27,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
-	"github.com/jsonnet-bundler/jsonnet-bundler/spec/v1/deps"
+	"github.com/trevorackerman/jsonnet-bundler/pkg/jsonnetfile"
+	v1 "github.com/trevorackerman/jsonnet-bundler/spec/v1"
+	"github.com/trevorackerman/jsonnet-bundler/spec/v1/deps"
 )
 
 const initContents = `{"version": 1, "dependencies": [], "legacyImports": true}`
@@ -62,10 +62,10 @@ func testInstallCommandWithJsonnetHome(t *testing.T, jsonnetHome string) {
 		},
 		{
 			Name:                    "OneURL",
-			URIs:                    []string{"github.com/jsonnet-bundler/jsonnet-bundler@v0.1.0"},
+			URIs:                    []string{"github.com/trevorackerman/jsonnet-bundler@v0.1.0"},
 			ExpectedCode:            0,
-			ExpectedJsonnetFile:     []byte(`{"version": 1, "dependencies": [{"source": {"git": {"remote": "https://github.com/jsonnet-bundler/jsonnet-bundler.git", "subdir": ""}}, "version": "v0.1.0"}], "legacyImports": true}`),
-			ExpectedJsonnetLockFile: []byte(`{"version": 1, "dependencies": [{"source": {"git": {"remote": "https://github.com/jsonnet-bundler/jsonnet-bundler.git", "subdir": ""}}, "version": "080f157c7fb85ad0281ea78f6c641eaa570a582f", "sum": "W1uI550rQ66axRpPXA2EZDquyPg/5PHZlvUz1NEzefg="}], "legacyImports": false}`),
+			ExpectedJsonnetFile:     []byte(`{"version": 1, "dependencies": [{"source": {"git": {"remote": "https://github.com/trevorackerman/jsonnet-bundler.git", "subdir": ""}}, "version": "v0.1.0"}], "legacyImports": true}`),
+			ExpectedJsonnetLockFile: []byte(`{"version": 1, "dependencies": [{"source": {"git": {"remote": "https://github.com/trevorackerman/jsonnet-bundler.git", "subdir": ""}}, "version": "080f157c7fb85ad0281ea78f6c641eaa570a582f", "sum": "W1uI550rQ66axRpPXA2EZDquyPg/5PHZlvUz1NEzefg="}], "legacyImports": false}`),
 		},
 		{
 			Name:                    "Local",

@@ -8,7 +8,7 @@ The jsonnet-bundler is a package manager for [Jsonnet](http://jsonnet.org/).
 ## Install
 
 ```
-go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
+go install -a github.com/trevorackerman/jsonnet-bundler/cmd/jb@latest
 ```
 **NOTE**: please use a recent Go version to do this, ideally Go 1.13 or greater.
 

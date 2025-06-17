@@ -21,8 +21,8 @@ import (
 
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg/jsonnetfile"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
+	"github.com/trevorackerman/jsonnet-bundler/pkg/jsonnetfile"
+	v1 "github.com/trevorackerman/jsonnet-bundler/spec/v1"
 )
 
 func initCommand(dir string) int {

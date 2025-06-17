@@ -23,7 +23,7 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/jsonnet-bundler/jsonnet-bundler/pkg"
+	"github.com/trevorackerman/jsonnet-bundler/pkg"
 )
 
 const (

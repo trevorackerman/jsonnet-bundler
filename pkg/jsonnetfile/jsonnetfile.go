@@ -21,8 +21,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	v0 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v0"
-	v1 "github.com/jsonnet-bundler/jsonnet-bundler/spec/v1"
+	v0 "github.com/trevorackerman/jsonnet-bundler/spec/v0"
+	v1 "github.com/trevorackerman/jsonnet-bundler/spec/v1"
 )
 
 const (
