@@ -135,6 +135,7 @@ func gzipUntar(dst string, r io.Reader, subDir string) error {
 			}
 
 			err := func() error {
+				fmt.Println("opening regular file", target
 				f, err := os.OpenFile(target, os.O_CREATE|os.O_RDWR, os.FileMode(header.Mode))
 				if err != nil {
 					return err
@@ -212,6 +213,7 @@ func (p *GitPackage) Install(ctx context.Context, name, dir, version string) (st
 		err = downloadGitHubArchive(archiveFilepath, archiveUrl)
 		if err == nil {
 			var ar *os.File
+			fmt.Println("opening archive file", archiveFilepath)
 			ar, err = os.Open(archiveFilepath)
 			defer ar.Close()
 			if err == nil {

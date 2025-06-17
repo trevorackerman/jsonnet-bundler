@@ -367,8 +367,10 @@ func hashDir(dir string) string {
 			return nil
 		}
 
+		fmt.Println("opening", path)
 		f, err := os.Open(path)
 		if err != nil {
+			fmt.Println("error opening", path, ":", err)
 			return err
 		}
 		defer f.Close()

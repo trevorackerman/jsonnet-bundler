@@ -256,6 +256,7 @@ func newFileValue(p **os.File, flag int, perm os.FileMode) *fileValue {
 }
 
 func (f *fileValue) Set(value string) error {
+	fmt.Println("Opening file:", value)
 	if fd, err := os.OpenFile(value, f.flag, f.perm); err != nil {
 		return err
 	} else {

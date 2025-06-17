@@ -273,6 +273,7 @@ func ExpandArgsFromFile(filename string) (out []string, err error) {
 	if filename == "" {
 		return nil, fmt.Errorf("expected @ file to expand arguments from")
 	}
+	fmt.Println("opening arguments file", filename)
 	r, err := os.Open(filename)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open arguments file %q: %s", filename, err)
