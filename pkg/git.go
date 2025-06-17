@@ -135,7 +135,7 @@ func gzipUntar(dst string, r io.Reader, subDir string) error {
 			}
 
 			err := func() error {
-				fmt.Println("opening regular file", target
+				fmt.Println("opening regular file", target)
 				f, err := os.OpenFile(target, os.O_CREATE|os.O_RDWR, os.FileMode(header.Mode))
 				if err != nil {
 					return err
