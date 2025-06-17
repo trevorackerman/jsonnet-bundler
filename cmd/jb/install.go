@@ -16,6 +16,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -83,6 +84,7 @@ func installCommand(dir, jsonnetHome string, uris []string, single bool, legacyN
 	}
 
 	jsonnetPkgHomeDir := filepath.Join(dir, jsonnetHome)
+	fmt.Println("Installing packages into", jsonnetPkgHomeDir)
 	locked, err := pkg.Ensure(jsonnetFile, jsonnetPkgHomeDir, lockFile.Dependencies)
 	kingpin.FatalIfError(err, "failed to install packages")
 

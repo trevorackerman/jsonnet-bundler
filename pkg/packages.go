@@ -215,6 +215,7 @@ func known(deps *deps.Ordered, p string) bool {
 }
 
 func ensure(direct *deps.Ordered, vendorDir, pathToParentModule string, locks *deps.Ordered) (*deps.Ordered, error) {
+	fmt.Println("ensuring", len(direct.Keys()), "direct dependencies in", vendorDir, "for parent module", pathToParentModule)
 	deps := deps.NewOrdered()
 
 	for _, k := range direct.Keys() {
@@ -236,6 +237,7 @@ func ensure(direct *deps.Ordered, vendorDir, pathToParentModule string, locks *d
 		dir := filepath.Join(vendorDir, d.Name())
 		os.RemoveAll(dir)
 
+		fmt.Println("downloading", d.Name(), "to", vendorDir, "at version", d.Version)
 		locked, err := download(d, vendorDir, pathToParentModule)
 		if err != nil {
 			return nil, errors.Wrap(err, "downloading")
@@ -255,7 +257,9 @@ func ensure(direct *deps.Ordered, vendorDir, pathToParentModule string, locks *d
 			continue
 		}
 
-		f, err := jsonnetfile.Load(filepath.Join(vendorDir, d.Name(), jsonnetfile.File))
+		jf := filepath.Join(vendorDir, d.Name(), jsonnetfile.File)
+		fmt.Println("loading jsonnetfile", jf)
+		f, err := jsonnetfile.Load(jf)
 		if err != nil {
 			if os.IsNotExist(err) {
 				continue
@@ -351,6 +355,7 @@ func check(d deps.Dependency, vendorDir string) bool {
 	}
 
 	dir := filepath.Join(vendorDir, d.Name())
+	fmt.Println("check gonna hashDir", dir)
 	sum := hashDir(dir)
 	return d.Sum == sum
 }
@@ -378,6 +383,7 @@ func hashDir(dir string) string {
 			return err
 		}
 		defer f.Close()
+		fmt.Println("hashdir opened", path)
 
 		if _, err := io.Copy(hasher, f); err != nil {
 			return err
